@@ -1,16 +1,16 @@
 <launch>
     <!-- Send a static GPS fix to every new subscriber. Edit latitude and longitude in launch/demo.gps to use your own position. -->
-   <!-- <node pkg="rostopic" type="rostopic" name="fake_gps_fix" args="pub /gps/fix sensor_msgs/NavSatFix -latch -file=$(find rviz_maps)/launch/demo.gps" output="screen"/>
--->
-    <arg name="use_bag" default="True" />  
-    <arg name="bag_name" default="sample" />
+    <!-- <node pkg="rostopic" type="rostopic" name="fake_gps_fix" args="pub /gps/fix sensor_msgs/NavSatFix -latch -file=$(find rviz_maps)/launch/demo.gps"/> -->
+
+    <arg name="use_bag" default="true" />
+    <arg name="bag_name" default="map_route1" />
 
 
-    <group if="$(arg use_bag)" >
+    <group if="$(arg use_bag)">
         <node pkg="rosbag" type="play" name="rosbag_play" args="$(find rviz_maps)/data/$(arg bag_name).bag" />
     </group>
 
-    <node pkg="rviz_maps" type="plot_markers" name="plot_markers" output="screen"  args=""></node> -->
+    <node pkg="rviz_maps" type="plot_markers" name="plot_markers" output="screen" args=""></node>
 
 
     <!-- Start rviz with a pre-configured AerialMap instance. It will use the fake GPS fix from above. -->
